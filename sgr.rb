@@ -9,7 +9,7 @@ class Sgr < Formula
     sha256 "0d8a8d16fe885d59aa8f027b546c0d29c7fa04cbb99fc3d6a1968cf1d011e740"
     
     def install
-      bin.install "sgr-osx-x86_64/sgr"
+      bin.install "sgr"
     end
   end
 
