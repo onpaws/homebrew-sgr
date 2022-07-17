@@ -1,10 +1,10 @@
 # Homebrew Tap for `sgr`
 
-Intended for Homebrew users who might prefer it to [other install methods](https://www.splitgraph.com/docs/sgr-cli/installation).
+Intended for Mac Homebrew users. [Other install methods](https://www.splitgraph.com/docs/sgr-cli/installation) are available.
 
 # How to use
 
-This tap installs the binary version of `sgr`.
+This tap installs the binary multifile version of `sgr`.
 
 First, make sure you have [Homebrew](https://brew.sh/) installed.
 
