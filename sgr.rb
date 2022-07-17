@@ -5,11 +5,11 @@ class Sgr < Formula
   license "Apache-2.0"
 
   on_macos do
-    url "https://github.com/splitgraph/sgr/archive/refs/tags/v0.3.10.tar.gz"
-    sha256 "67b02dff03b4e9117c04c3c99ba7bd173c821455b44af92a038118346b70e191"
+    url "https://github.com/splitgraph/sgr/releases/download/v0.3.10/sgr-osx-x86_64.tgz"
+    sha256 "0d8a8d16fe885d59aa8f027b546c0d29c7fa04cbb99fc3d6a1968cf1d011e740"
     
     def install
-      bin.install "bin/sgr"
+      bin.install "sgr-osx-x86_64/sgr"
     end
   end
 
