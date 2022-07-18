@@ -25,6 +25,7 @@ class Splitgraph < Formula
   # depends_on "six"
   depends_on "poetry" => :build
   depends_on "rust" => :build # for cryptography
+  depends_on "postgresql" => :build # for psycopg2-binary
 
   resource "asciitree" do
     url "https://files.pythonhosted.org/packages/2d/6a/885bc91484e1aa8f618f6f0228d76d0e67000b0fdd6090673b777e311913/asciitree-0.3.3.tar.gz"
