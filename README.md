@@ -11,8 +11,8 @@ First, make sure you have [Homebrew](https://brew.sh/) installed.
 From a shell, run:
 
 ```shell
-brew tap onpaws/sgr
-brew install onpaws/sgr/sgr
+brew tap onpaws/splitgraph
+brew install onpaws/splitgraph/sgr
 ```
 
 You should see something similar to:
