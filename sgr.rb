@@ -190,10 +190,6 @@ class Sgr < Formula
     system poetry, "build", "--format", "wheel", "--verbose", "--no-interaction"
     venv.pip_install_and_link Dir["dist/splitgraph-*.whl"].first
     bin.install_symlink libexec/"bin/sgr"
-    # system "false"
-    # system Formula["poetry"].opt_bin/"poetry", "build", "--format", "wheel", "--verbose", "--no-interaction"
-    # system Formula["poetry"].opt_bin/"poetry", "install"
-    # system Formula["poetry"].opt_bin/"poetry", "run", "pyinstaller", "-F", "splitgraph.spec"
   end
 
   def caveats
@@ -203,30 +199,12 @@ class Sgr < Formula
   end
 
   test do
-    path = testpath/"weather.sql"
-    path.write <<~EOS
-      CREATE TABLE weather (temp INTEGER);
-      INSERT INTO weather (temp) VALUES (40), (45), (50);
-      SELECT AVG(temp) FROM weather;
-    EOS
-
+    sgr_status = shell_output("#{bin}/sgr cloud login --username homebrewtest --password correcthorsebatterystaple")
+    
     expected_output = <<~EOS
-      ┌─────────────┐
-      │ avg("temp") │
-      ├─────────────┤
-      │ 45.0        │
-      └─────────────┘
+      error: splitgraph.exceptions.AuthAPIError: {"error_code":"INVALID_CREDENTIALS","error":"Invalid username or password"}
     EOS
     
-    assert_equal expected_output, shell_output("#{bin}/duckdb_cli < #{path}")
-
-    
-    sgr_status = shell_output("#{bin}/sgr example splitfile splitgraph/socrata paws/nyc")
-    assert_match "# Import", sgr_status
-    # TODO add a test that actually "uses sgr"
-    #   e.g. read a Splitfile? should probably be local only and/or anonymous
-    # here's an example from fly.io
-    # flyctl_status = shell_output("flyctl status 2>&1", 1)
-    # assert_match "Error No access token available. Please login with 'flyctl auth login'", flyctl_status
+    assert_equal expected_output, sgr_status
   end
 end
