@@ -6,8 +6,8 @@ Intended for Mac Homebrew users.
 
 # What's the difference?
 
-`sgr.rb` is the formula based on compiling source code
-`splitgraph.rb` is a tap, which installs a pre-compiled binary.
+- `sgr.rb` is the [formula](https://docs.brew.sh/Adding-Software-to-Homebrew#formulae) based on compiling source code
+- `splitgraph.rb` is the [tap](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap#creating-a-tap), which installs a pre-compiled Intel binary for macOS. We have a report of it working on M1 also.
 
 # How to use the formula
 
@@ -18,14 +18,14 @@ TODO: make this reality
 
 # How to use the tap
 
-The tap installs the binary multifile version of `sgr`.
+The tap installs the binary multifile version of `splitgraph` (same as sgr).
 
 1. Ensure you have [Homebrew](https://brew.sh/) installed.
 2. Run:
 
    ```shell
    brew tap onpaws/splitgraph
-   brew install onpaws/splitgraph/sgr
+   brew install onpaws/splitgraph/splitgraph
    ```
 
 You should see something similar to:
