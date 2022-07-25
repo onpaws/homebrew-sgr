@@ -1,45 +1,39 @@
-# Homebrew Formula (and tap) for `sgr`
+# Homebrew Formula and Tap for Splitgraph CLI
 
-Intended for Mac Homebrew users.
+[Homebrew](https://brew.sh/) users can now install `sgr`, the Splitgraph CLI . [Source](#install-from-source) and [binary](#install-a-binary) versions are available.
 
-[Other install methods](https://www.splitgraph.com/docs/sgr-cli/installation) are available.
+### Don't use Homebrew?
 
-# What's the difference?
+Consider [other install methods](https://www.splitgraph.com/docs/sgr-cli/installation).
 
-- `sgr.rb` is the [formula](https://docs.brew.sh/Adding-Software-to-Homebrew#formulae) based on compiling source code
-- `splitgraph.rb` is the [tap](https://docs.brew.sh/How-to-Create-and-Maintain-a-Tap#creating-a-tap), which installs a pre-compiled Intel binary for macOS. We have a report of it working on M1 also.
+## Install from source
 
-# How to use the formula
-
-TODO: make this reality
-
-1. Ensure you have [Homebrew](https://brew.sh/) installed.
-2. Run `brew install sgr`.
-
-# How to use the tap
-
-The tap installs the binary multifile version of `splitgraph` (same as sgr).
-
-1. Ensure you have [Homebrew](https://brew.sh/) installed.
-2. Run:
-
-   ```shell
-   brew tap onpaws/splitgraph
-   brew install onpaws/splitgraph/splitgraph
-   ```
-
-You should see something similar to:
-
-```
-==> Summary
-🍺  /usr/local/Cellar/sgr/0.3.10: 153 files, 42.3MB, built in 3 seconds
+```shell
+brew install splitgraph/splitgraph/sgr
 ```
 
-Note: If you have previously installed `sgr` some other way e.g. pip, be aware whichever copy appears first on your `PATH` is what will run.
+The source code will be downloaded, compiled, and a CPU native version of `sgr` will be added to your system.
+Tip: Apple Silicon users who prefer a CPU-native binary should consider this.
 
-## Antifeatures
+## Install the x86_64 binary
 
-- Any version older than the current is not supported°
-- Using `splitgraph` as a Python library ([rationale](https://docs.brew.sh/Python-for-Formula-Authors))
+```shell
+brew install onpaws/splitgraph/splitgraph-binary
+```
 
-° Because Homebrew is distributed as a Git repo, technically its possible to checkout some older commit and install a previously 'current' version.
+The binary is fetched, copied, and linked, which should take a few seconds. This binary works on Apple Silicon via Rosetta.
+
+## Caveats
+
+- While you can install both source and binary versions simultaneously, Homebrew will only link (i.e. make available to your `PATH`) one version at a time.
+- While the binary is x86_64 architecture only at this time, we have a report of an Apple Silicon/Monterey user installing and using it successfully.
+- Note: If you have previously installed `sgr` some other way e.g. pip, please be aware whichever copy appears first on your `PATH` will take precedence.
+
+## Not supported
+
+- Historical versions of `sgr` are not explicitly supported
+- Homebrew's `brew install` is strictly for the CLI -- it does not install Python modules by design. If you want to wish to work with the `splitgraph` module in Python, consider [PyPI](https://pypi.org/project/splitgraph).
+
+## Contributing / Issues
+
+Feedback is welcome via [GitHub issues](https://github.com/splitgraph/homebrew-splitgraph/issues), [email](mailto:support@splitgraph.com), or [Discord](https://discord.com/channels/718534846472912936)

@@ -2,9 +2,9 @@ class Sgr < Formula
   include Language::Python::Virtualenv
 
   desc "Command-line client for Splitgraph, a version control system for data"
-  homepage "https://www.splitgraph.com"
-  url "https://github.com/onpaws/sgr/archive/refs/tags/v0.3.11-brew.tar.gz"
-  sha256 "5aedf3a3e5d818ed45e71b4386014a90d918233338a0be8d090618584c0193d3"
+  homepage "https://www.splitgraph.com/docs/sgr-advanced/getting-started/introduction"
+  url "https://github.com/onpaws/sgr/archive/refs/tags/v0.3.11-brew2.tar.gz"
+  sha256 "2c4ea69f935c80c853211ad85f3253b31c541fad319c2c327895a879110e2665"
   license "Apache-2.0"
   head "https://github.com/onpaws/sgr.git", branch: "master"
   
@@ -194,7 +194,16 @@ class Sgr < Formula
 
   def caveats
     <<~EOS
-      If you want to run Splitgraph Engine functionality, please ensure Docker is available.
+      Some features are powered by sgr Engine [1], which is available as a 
+      Docker image [2]. If you want to use these features, please ensure
+      Docker is available and follow the install steps [3].
+      
+      Example projects https://github.com/splitgraph/sgr/tree/master/examples
+      Five minute demo https://www.splitgraph.com/docs/sgr-advanced/getting-started/five-minute-demo
+
+      [1] https://www.splitgraph.com/docs/sgr-advanced/architecture/splitgraph-engine
+      [2] https://hub.docker.com/r/splitgraph/engine
+      [3] https://www.splitgraph.com/docs/sgr-advanced/getting-started/installation#manual
     EOS
   end
 
