@@ -6,6 +6,20 @@
 
 Consider [other install methods](https://www.splitgraph.com/docs/sgr-cli/installation).
 
+## Install the x86_64 binary
+
+```shell
+brew install onpaws/splitgraph/splitgraph-binary
+```
+
+The binary is fetched, copied, and linked, which should take a few seconds. This binary works on Apple Silicon via Rosetta.
+
+#### Need to uninstall?
+
+```shell
+brew uninstall splitgraph/splitgraph/splitgraph-binary
+```
+
 ## Install from source
 
 ```shell
@@ -15,13 +29,11 @@ brew install splitgraph/splitgraph/sgr
 The source code will be downloaded, compiled, and a CPU native version of `sgr` will be added to your system.
 Tip: Apple Silicon users who prefer a CPU-native binary should consider this.
 
-## Install the x86_64 binary
+#### Need to uninstall?
 
 ```shell
-brew install onpaws/splitgraph/splitgraph-binary
+brew uninstall splitgraph/splitgraph/sgr
 ```
-
-The binary is fetched, copied, and linked, which should take a few seconds. This binary works on Apple Silicon via Rosetta.
 
 ## Caveats
 
