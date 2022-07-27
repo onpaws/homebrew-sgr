@@ -1,18 +1,18 @@
-# Homebrew Formula and Tap for Splitgraph CLI
+# Splitgraph Homebrew Tap
 
-[Homebrew](https://brew.sh/) users can now install `sgr`, the Splitgraph CLI . [Source](#install-from-source) and [binary](#install-a-binary) versions are available.
+[Homebrew](https://brew.sh/) users can now install `sgr`, the Splitgraph CLI. [Source](#install-from-source) and [binary](#install-the-binary) formulas are available.
 
 ### Don't use Homebrew?
 
 Consider [other install methods](https://www.splitgraph.com/docs/sgr-cli/installation).
 
-## Install the x86_64 binary
+## Install the binary
 
 ```shell
-brew install onpaws/splitgraph/splitgraph-binary
+brew install splitgraph/splitgraph/splitgraph-binary
 ```
 
-The binary is fetched, copied, and linked, which should take a few seconds. This binary works on Apple Silicon via Rosetta.
+The binary is fetched, copied, and linked, which should take a few seconds. This binary is currently x86_64, and works on Apple Silicon via Rosetta.
 
 #### Need to uninstall?
 
