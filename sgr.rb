@@ -9,6 +9,7 @@ class Sgr < Formula
   head "https://github.com/onpaws/sgr.git", branch: "master"
   
   depends_on "python@3.10"
+  depends_on "poetry" => :build
 
   resource "splitgraph" do
     url "https://files.pythonhosted.org/packages/55/43/7426613a4258a3bea07453dc4da4824a3ffffe2bf3cfa26657ae50cffbfd/splitgraph-0.3.10.tar.gz"
