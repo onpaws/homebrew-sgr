@@ -208,7 +208,7 @@ class Sgr < Formula
   end
 
   test do
-    sgr_status = shell_output("#{bin}/sgr cloud login --username homebrewtest --password correcthorsebatterystaple")
+    sgr_status = shell_output("#{bin}/sgr cloud login --username homebrewtest --password correcthorsebatterystaple", 2)
     
     expected_output = <<~EOS
       error: splitgraph.exceptions.AuthAPIError: {"error_code":"INVALID_CREDENTIALS","error":"Invalid username or password"}
