@@ -20,7 +20,7 @@ jobs:
     steps:
       # `brew install` pulls taps from GH, don't need to checkout the repo
       - name: Install sgr
-        run: brew install splitgraph/splitgraph/sgr
+        run: brew install --verbose splitgraph/splitgraph/sgr
 
       - name: Test sgr install (brew test sgr)
-        run: brew test sgr
+        run: brew test --verbose sgr
