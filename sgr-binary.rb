@@ -4,8 +4,8 @@ class SgrBinary < Formula
   license "Apache-2.0"
 
   on_macos do
-    url "https://github.com/splitgraph/sgr/releases/download/v0.3.10/sgr-osx-x86_64.tgz"
-    sha256 "0d8a8d16fe885d59aa8f027b546c0d29c7fa04cbb99fc3d6a1968cf1d011e740"
+    url "https://github.com/splitgraph/sgr/releases/download/v0.3.12/sgr-osx-x86_64.tgz"
+    sha256 "0f1f7fb5168e332152ffd327476e93cf465de5f04d4b243cfc177c65b9416cc5"
     
     def install
       bin.install Dir["*"]
