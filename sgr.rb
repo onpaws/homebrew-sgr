@@ -3,15 +3,14 @@ class Sgr < Formula
 
   desc "Command-line client for Splitgraph, a version control system for data"
   homepage "https://www.splitgraph.com/docs/sgr-advanced/getting-started/introduction"
-  url "https://github.com/onpaws/sgr/archive/refs/tags/v0.3.11-brew2.tar.gz"
-  sha256 "2c4ea69f935c80c853211ad85f3253b31c541fad319c2c327895a879110e2665"
+  url "https://github.com/splitgraph/sgr/archive/refs/tags/v0.3.12.tar.gz"
+  sha256 "e5153944383a0160efe4d56a2c4a6d11f74bb1a04d097df95806ddcbc1ab5618"
   license "Apache-2.0"
-  head "https://github.com/onpaws/sgr.git", branch: "master"
-  
-  depends_on "python@3.10"
+
   depends_on "poetry" => :build
   depends_on "rust" => :build # for cryptography
-  depends_on "postgres" => :build # for psycopg2-binary
+  depends_on "libpq" # for psycopg2-binary
+  depends_on "python@3.10"
 
   resource "asciitree" do
     url "https://files.pythonhosted.org/packages/2d/6a/885bc91484e1aa8f618f6f0228d76d0e67000b0fdd6090673b777e311913/asciitree-0.3.3.tar.gz"
@@ -194,10 +193,10 @@ class Sgr < Formula
 
   def caveats
     <<~EOS
-      Some features are powered by sgr Engine [1], which is available as a 
+      Some features are powered by sgr Engine [1], which is available as a
       Docker image [2]. If you want to use these features, please ensure
       Docker is available and follow the install steps [3].
-      
+
       Example projects https://github.com/splitgraph/sgr/tree/master/examples
       Five minute demo https://www.splitgraph.com/docs/sgr-advanced/getting-started/five-minute-demo
 
@@ -208,12 +207,12 @@ class Sgr < Formula
   end
 
   test do
-    sgr_status = shell_output("#{bin}/sgr cloud login --username homebrewtest --password correcthorsebatterystaple 2>&1", 2)
-    
+    sgr_status = shell_output("#{bin}/sgr cloud login --username homebrewtest --password correcthorsebattery 2>&1", 2)
+
     expected_output = <<~EOS
       error: splitgraph.exceptions.AuthAPIError: {"error_code":"INVALID_CREDENTIALS","error":"Invalid username or password"}
     EOS
-    
+
     assert_equal expected_output, sgr_status
   end
 end
