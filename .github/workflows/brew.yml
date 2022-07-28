@@ -12,15 +12,32 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build-catalina:
     # The type of runner that the job will run on
-    runs-on: macos-latest
+    runs-on: macos-10.15
 
     # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-      # `brew install` pulls taps from GH, don't need to checkout the repo
+    steps: # `brew install` pulls taps from GH, don't need to checkout the repo
       - name: Install sgr
-        run: brew install --verbose splitgraph/splitgraph/sgr
+        run: brew install splitgraph/splitgraph/sgr
 
       - name: Test sgr install (brew test sgr)
-        run: brew test --verbose sgr
+        run: brew test sgr
+
+  build-bigsur:
+    runs-on: macos-11 # as of July 2022, macos-11 === macos-latest
+    steps:
+      - name: Install sgr
+        run: brew install splitgraph/splitgraph/sgr
+
+      - name: Test sgr install (brew test sgr)
+        run: brew test sgr
+
+  build-monterey:
+    runs-on: macos-12
+    steps:
+      - name: Install sgr
+        run: brew install splitgraph/splitgraph/sgr
+
+      - name: Test sgr install (brew test sgr)
+        run: brew test sgr
