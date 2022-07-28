@@ -3,14 +3,9 @@ class Sgr < Formula
 
   desc "Command-line client for Splitgraph, a version control system for data"
   homepage "https://www.splitgraph.com/docs/sgr-advanced/getting-started/introduction"
-  url "https://github.com/splitgraph/sgr/archive/refs/tags/v0.3.11.tar.gz"
-  sha256 "PLZ2SHA256ME"
+  url "https://github.com/splitgraph/sgr/archive/refs/tags/v0.3.12.tar.gz"
+  sha256 "e5153944383a0160efe4d56a2c4a6d11f74bb1a04d097df95806ddcbc1ab5618"
   license "Apache-2.0"
-  head "https://github.com/onpaws/sgr.git", branch: "master"
-
-  bottle do
-    sha256 cellar: :any, monterey: "74c0b4c406361e53cc04b15cf228eee13d94b8a087decb15e7555bb704a92bfa"
-  end
 
   depends_on "poetry" => :build
   depends_on "rust" => :build # for cryptography
