@@ -7,6 +7,16 @@ class Sgr < Formula
   sha256 "e5153944383a0160efe4d56a2c4a6d11f74bb1a04d097df95806ddcbc1ab5618"
   license "Apache-2.0"
 
+  bottle do
+    sha256 cellar: :any,                 arm64_monterey: "9ed51698283079824a7d599d00710ae5d742128721d6f782ce2311813ebc828b"
+    sha256 cellar: :any,                 arm64_big_sur:  "ca7de3c262b37b0eacdd714b52a53176e9e19047290076df1dd46448c83527d3"
+    sha256 cellar: :any,                 monterey:       "1e7346eaf87e3a016a2320f44c3c06748eb9bcd6a69cc4c26ba4cbe55de5072b"
+    sha256 cellar: :any,                 big_sur:        "c8a928fc8caec9e1d8d2a7085785648659174ce2b1aa63c8f5d4b8ccded0b42c"
+    sha256 cellar: :any,                 catalina:       "411f1924e918a81a8230cbafbcec86a9e78c5982bd79e3fda9cdf6777e7fb8c0"
+    sha256 cellar: :any_skip_relocation, x86_64_linux:   "5c459933ee16f232f9bd09512dca9d30c6962f1bc15d7b821b38ad54faa40652"
+  end
+
+  depends_on "libpython-tabulate" => :build
   depends_on "poetry" => :build
   depends_on "rust" => :build # for cryptography
   depends_on "libpq" # for psycopg2-binary
@@ -157,11 +167,6 @@ class Sgr < Formula
     sha256 "9d100ac65288ce24a90da159bbbb06f0fdc0871c2815c63bb6417fea7df4894f"
   end
 
-  resource "tabulate" do
-    url "https://files.pythonhosted.org/packages/7a/53/afac341569b3fd558bf2b5428e925e2eb8753ad9627c1f9188104c6e0c4a/tabulate-0.8.10.tar.gz"
-    sha256 "6c57f3f3dd7ac2782770155f3adb2db0b1a269637e42f27599925e64b114f519"
-  end
-
   resource "tqdm" do
     url "https://files.pythonhosted.org/packages/98/2a/838de32e09bd511cf69fe4ae13ffc748ac143449bfc24bb3fd172d53a84f/tqdm-4.64.0.tar.gz"
     sha256 "40be55d30e200777a307a7585aee69e4eabb46b4ec6a4b4a5f2d9f11e7d5408d"
@@ -187,23 +192,8 @@ class Sgr < Formula
     venv.pip_install resources
     poetry = Formula["poetry"].opt_bin/"poetry"
     system poetry, "build", "--format", "wheel", "--verbose", "--no-interaction"
-    venv.pip_install_and_link Dir["dist/splitgraph-*.whl"].first
+    venv.pip_install_and_link buildpath.glob("dist/splitgraph-*.whl").first
     bin.install_symlink libexec/"bin/sgr"
-  end
-
-  def caveats
-    <<~EOS
-      Some features are powered by sgr Engine [1], which is available as a
-      Docker image [2]. If you want to use these features, please ensure
-      Docker is available and follow the install steps [3].
-
-      Example projects https://github.com/splitgraph/sgr/tree/master/examples
-      Five minute demo https://www.splitgraph.com/docs/sgr-advanced/getting-started/five-minute-demo
-
-      [1] https://www.splitgraph.com/docs/sgr-advanced/architecture/splitgraph-engine
-      [2] https://hub.docker.com/r/splitgraph/engine
-      [3] https://www.splitgraph.com/docs/sgr-advanced/getting-started/installation#manual
-    EOS
   end
 
   test do
